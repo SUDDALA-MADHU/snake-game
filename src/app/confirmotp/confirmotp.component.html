@@ -1,0 +1,19 @@
+<mat-card>
+    <mat-card-content>
+      <form [formGroup]="otpform" (ngSubmit)="submission()">
+        <h2>Enter OTP</h2>
+        
+  
+        <!-- <mat-error  *ngIf="errormessages.passworderror">Invalid Username or Password </mat-error> -->
+        <mat-form-field appearance="fill">
+          <mat-label>OTP</mat-label>
+          <input matInput placeholder="OTP"  formControlName="otp"  required>
+          <mat-error *ngIf="otpform.get('otp')?.hasError('required')">*Required field</mat-error>
+        </mat-form-field>
+        <br />
+        <button type="submit" value="login" mat-raised-button color="primary">
+            Submit OTP</button
+          >&nbsp;
+    </form>
+</mat-card-content>
+</mat-card>

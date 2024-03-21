@@ -1,0 +1,61 @@
+
+<mat-card>
+    <mat-card-content>
+      <form [formGroup]="loginform" (ngSubmit)="submission()">
+        <h2>Log In</h2>
+        <mat-error *ngIf="errormessages">Invalid Credentials</mat-error>
+        <mat-form-field appearance="fill">
+          <mat-label>Email/PhoneNumber</mat-label>
+          <input
+            matInput
+            placeholder="Email/PhoneNumber"
+            formControlName="emailorphonenumber"
+            required
+          />
+          <mat-error *ngIf="loginform.get('emailorphonenumber')?.hasError('required')"
+            >*Required field</mat-error
+          >
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'"  type="password"
+          formControlName="password"
+          placeholder="Password"
+          required>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="loginform.get('password')?.hasError('required')"
+            >*Required field
+          </mat-error>
+        </mat-form-field>
+  
+        <!-- <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            [type]="hide ? 'password' : 'text'" 
+            type="password"
+            formControlName="password"
+            placeholder="Password"
+            required
+          /> -->
+  
+        <!-- </mat-form-field> -->
+        <div class="link">
+          <mat-button [routerLink]="['/forgotpassword']"
+            >forgot Password?</mat-button
+          >
+        </div>
+        <br />
+        <button type="submit" value="login" mat-raised-button color="primary">
+          Login</button
+        >&nbsp;
+        <br />
+        <p>Don't have a Account?</p>
+        <a [routerLink]="['/register']" class="btn btn-link">Sign Up</a>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  
